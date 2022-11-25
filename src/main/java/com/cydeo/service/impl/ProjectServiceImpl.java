@@ -24,11 +24,11 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
 
     @Override
     public void deleteById(String id) {
-
+       super.deleteById(id);
     }
 
     @Override
-    public void update(ProjectDTO Object) {
-
+    public void update(ProjectDTO object) {
+      super.update(object.getProjectCode(),object);
     }
 }
