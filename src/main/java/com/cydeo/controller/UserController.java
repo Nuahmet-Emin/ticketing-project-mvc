@@ -48,7 +48,7 @@ public class UserController {
 
         return "/user/update";
     }
-    @PostMapping("/update")
+    @PostMapping("/update{username}")
     public String updateUser( UserDTO user){
 
         userService.update(user);
@@ -56,6 +56,15 @@ public class UserController {
         return "redirect:/user/create";
 
     }
+    @GetMapping("/delete/{username}")
+    public String deleteUser(@PathVariable("username") String username){
+
+        userService.deleteById(username);
+
+        return "redirect:/user/create";
+
+    }
+
 
 
 }
