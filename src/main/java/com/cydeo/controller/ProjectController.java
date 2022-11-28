@@ -42,13 +42,33 @@ public class ProjectController {
         return "redirect:/project/create";
     }
 
-    @GetMapping("/delete{projectCode}")
+    @GetMapping("/delete/{projectCode}")
     public String deleteProject(@PathVariable("projectCode") String projectCode){
 
         projectService.deleteById(projectCode);
 
         return "redirect:/project/create";
     }
+
+    @GetMapping("/complete/{projectCode}")
+    public String completeProject(@PathVariable("projectCode") String projectCode){
+
+        projectService.complete(projectService.findById(projectCode));
+        return "redirect:/project/create";
+
+    }
+
+    @GetMapping("/update/{projectCode}")
+    public String updateProject(@PathVariable("projectCode") String projectCode, Model model){
+
+        model.addAttribute("project",projectService.findById(projectCode));
+        model.addAttribute("projects",projectService.findAll());
+        model.addAttribute("managers",userService.findManagers());
+        return "/project/update";
+
+    }
+
+
 
 
 }
