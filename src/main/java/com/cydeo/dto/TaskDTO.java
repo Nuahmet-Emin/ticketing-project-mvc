@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class TaskDTO {
 
